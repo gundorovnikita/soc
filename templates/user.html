@@ -1,0 +1,21 @@
+{% load static %}
+{% block content %}
+
+
+            {{user.user}}
+
+            <img class="" src="{{user.get_avatar_url}}" height="150px">
+            <br>
+            city:{{user.city}}
+            <br>
+            status:{{user.status}}
+            <br>
+
+
+        <br>
+        <a href="{% url 'login_url' %}">
+          <button type="submit" class="btn btn-success btn-md" name="button">Назад</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

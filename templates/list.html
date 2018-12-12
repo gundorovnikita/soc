@@ -1,0 +1,8 @@
+{% load static %}
+{% for list in list %}
+  <a href="{{list.get_absolute_url}}">{{ list.user }}</a>
+  <br>
+  <img src="{{ list.get_avatar_url }}" width="100px" alt="">
+  <hr>
+{% endfor %}
+<a href="{% url 'login_url'%}">Back</a>

@@ -1,0 +1,15 @@
+{% block content %}
+
+        <form  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ city.as_p }}
+            <input type="submit" class="btn btn-primary" value="Добавить">
+        </form>
+
+<hr>
+
+        <a href="{% url 'edit_profile' %}">
+            <button type="submit" class="btn btn-success btn-md" name="button">Cancel</button>
+        </a>
+
+{% endblock %}
