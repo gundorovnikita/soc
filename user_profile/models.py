@@ -13,6 +13,7 @@ class City(models.Model):
     def __str__(self):
         return self.slug
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     ava = models.ImageField()
@@ -32,6 +33,18 @@ class Profile(models.Model):
             return '/media/{}'.format(self.ava)
         else:
             return '/static/img/default.png'
+
+class Post(models.Model):
+    image = models.ImageField()
+    slug = models.SlugField(max_length=100, unique=True)
+    text = models.CharField(max_length=200)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    post = models.TextField()
+    def __str__(self):
+        return self.slug
+    def get_absolute_url(self):
+        return reverse('post_detail_url', kwargs={'slug': self.slug})
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

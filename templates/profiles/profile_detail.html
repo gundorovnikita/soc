@@ -1,30 +1,107 @@
-{% load static %}
-{% block content %}
-
-        <p>Welcome to your profile,
-            {% if profile.user %}
-                {{profile.user}}
-
-            {% else %}
-                {{user}}
-            {% endif %}
-            <hr>
-            <p>Your avatar:</p>
-            <img class="" src="{{profile.get_avatar_url}}" height="150px">
-            <br>
-            city:{{profile.city}}
-            <br>
-            status:{{profile.status}}
-            <br>
-        <a href="{% url 'edit_profile' %}">
-            <button type="submit" class="btn btn-success btn-md" name="button">Update profile</button>
-        </a>
-        <br>
-        <br>
-        <br>
-        <a href="{% url 'login_url' %}">
-          <button type="submit" class="btn btn-success btn-md" name="button">Назад</button>
-        </a>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href='{% static 'css/proffile.css' %}' rel="stylesheet">
+  <title>Document</title>
+</head>
+<body>
+  <div class="nav-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+              <div class="tape">
+                <a href="{% url 'people_url' %}" class='header_button'>Лента</a>
+              </div>
+        </div>
+        <div class="col-md-4">
+              <div class="main-page">
+                <a href="{% url 'view_profile' %}" class='header_button'>Мой Профиль</a>
+              </div>
+        </div>
+        <div class="col-md-4">
+              <div class="messages">
+                <a href="#" class='header_button'>Диалоги</a>
+              </div>
+        </div>
+      </div>
     </div>
+  </div>
+{% block content %}
+  <div class="content">
+    <div class="nav-card">
+        <div class="container">
+          <div class="row">
+          <div class="col-md-5">
+            <div class="ava">
+               <img src='{{user.get_avatar_url}}' height='200px' alt="">
+            </div>
+            </div>
+          <div class="col-md-7">
+            <div class="nick">
+              {{user.user}}
+            </div>
+            <div class="info">
+              <div class="status">
+                Статус: {{user.status}}
+              </div>
+              <div class="city">
+                Город: {{user.city}}
+              </div>
+              <div class="sex">
+                Мужской пол
+              </div>
+
+            </div>
+            <div class="button">
+              <a href="{% url 'edit_profile' %}" class='more_button'>Редактировать</a>
+              <a href="{% url 'logout_url' %}" class='more_button'>Выйти</a>
+            </div>
+            </div>
+          </div>
+      </div>
+    </div>
+<div class="container">
+  <div class="create_post">
+      <a href="{% url 'post_create_url' %}" class='mor_button'>Создать пост</a>
+  </div>
 </div>
-{% endblock %}
+{% for posts in posts %}
+  {% if posts%}
+  </div>
+    <div class="posts">
+      <div class="container">
+        <div class="post">
+          <div class="row">
+            <div class="col-md-5">
+
+                <a href="#"> <img src="{{posts.image.url}}" class="logo" height="180px" alt=""> </a>
+
+              </div>
+            <div class="col-md-7">
+              <div class="name">
+                <a href="#">{{posts.text}}</a>
+              </div>
+              <div class="description">
+                {{posts.post}}
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  {% endif %}
+{% endfor %}
+
+  {% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

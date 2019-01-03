@@ -42,14 +42,16 @@
   <div class="redactor">
     <br>
     <div class="container">
-      {% block content %}
+      {% if request.user.is_authenticated %}
+        <form enctype="multipart/form-data" method="post">
+          {% csrf_token %}
+          {{ create.as_p }}
+          <button type="submit">Предложить пост</button>
 
-          <form method='post'>
-             {% csrf_token %}
-             {{ form.as_p }}
-             <input type="submit" value="Submit">
-           </form>
-      {% endblock %}
-
+        </form>
+        <hr>
+      {% else %}
+      <p><a href="{% url 'register_url'%}">Зарегистрируйтесь</a>, прежде чем создать пост </p>
+      {% endif %}
     </div>
   </div>

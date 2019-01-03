@@ -1,18 +1,61 @@
 {% load staticfiles %}
-{% block content %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href='{% static 'css/proffile.css' %}' rel="stylesheet">
+  <title>Document</title>
+</head>
+<body>
+  <div class="nav-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+              <div class="tape">
+                <a href="{% url 'people_url' %}" class='header_button'>Лента</a>
+              </div>
+        </div>
+        <div class="col-md-4">
+              <div class="main-page">
+                <a href="{% url 'view_profile' %}" class='header_button'>Мой Профиль</a>
+              </div>
+        </div>
+        <div class="col-md-4">
+              <div class="messages">
+                <a href="#" class='header_button'>Диалоги</a>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <form  method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>Если вашего города нет в списке, его можно <a href="{% url 'create_city' %}">добавить</a></p>
-            {{ profile_form.as_p }}
-            {{ user_form.as_p }}
-            <input type="submit" class="btn btn-primary" value="Change profile">
-        </form>
+  <div class="redactor">
+    <div class="container">
+      {% block content %}
 
-<hr>
+              <form  method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <p>Если вашего города нет в списке, его можно <a href="{% url 'create_city' %}">добавить</a></p>
+                  {{ profile_form.as_p }}
+                  {{ user_form.as_p }}
+                  <input type="submit" class="btn btn-primary" value="Сохранить изменения">
+              </form>
 
-        <a href="{% url 'view_profile' %}">
-            <button type="submit" class="btn btn-success btn-md" name="button">Cancel</button>
-        </a>
+              <a href="{% url 'view_profile' %}">
+                  <button type="submit" class="btn btn-success btn-md" name="button">Отмена</button>
+              </a>
 
-{% endblock %}
+      {% endblock %}
+
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

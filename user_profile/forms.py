@@ -19,3 +19,8 @@ class CreateCity(forms.ModelForm):
     class Meta:
         model = City
         fields = ['text','slug',]
+
+class CreatePostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields =('text','slug','post','image',)

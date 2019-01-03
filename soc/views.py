@@ -39,7 +39,7 @@ def register(request):
             new_user = form.save(commit=False)
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
-            Profile.objects.create(user=new_user)
+            #Profile.objects.create(user=new_user)
             logout(request)
             return redirect('login_url')
     else:

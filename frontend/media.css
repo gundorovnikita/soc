@@ -1,0 +1,102 @@
+body{
+  background-color: #FAFAFA;
+}
+a{
+  font-size: 20px;
+  color:black;
+}
+a:hover{
+  color:black;
+}
+.nav-wrapper{
+  background-color: #4b8984;
+}
+.header_button{
+    width: 200px;
+    height: 35px;
+    background-color: #4b8984;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 600;
+    margin:3px;
+    text-align: center;
+    padding-top: 5px;
+    font-family: 'Lora', serif;
+    display: inline-block;
+    transition: all 0.2s ease-in;
+    color: white;
+}
+
+.header_button:hover{
+    color: black;
+    text-decoration: none;
+    background-color: #f4fffe;
+}
+
+.nav-card{
+  position: relative;
+  background-color: #e5f9ff;
+  height: 250px;
+}
+.ava{
+  margin-left: 26px;
+  margin-top: 20px;
+}
+.nick{
+  margin-top: 26px;
+  margin-left: 35px;
+  font-size: 20px;
+}
+.info{
+  margin-top: 14px;
+  margin-left: 35px;
+  font-size: 15px;
+}
+
+.button{
+  margin-top: 15px;
+  margin-left: 5px;
+}
+.images{
+  margin-top: 10px;
+}
+.card-image{
+  margin: 10px;
+}
+
+.more_button{
+  background-color: #4b8984;
+  border-radius: 1px;
+  height: 30px;
+  width: 150px;
+  font-size: 14px;
+  font-weight: 600;
+  margin:3px;
+  text-align: center;
+  padding-top: 5px;
+  font-family: 'Lora', serif;
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  color: white;
+}
+.more_button:hover{
+    color: white;
+    text-decoration: none;
+    background-color: #59a59f;
+}
+.post{
+  margin: 15px;
+  border-radius: 15px;
+  background-color: #e5f9ff;
+}
+.logo{
+  margin: 10px;
+}
+.name{
+  margin-top: 15px;
+  margin-left: 70px;
+  font-size: 20px;
+}
+.description{
+  margin-left: 70px;
+}
